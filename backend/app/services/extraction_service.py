@@ -610,11 +610,15 @@ def extract_fields(
         model=settings.LLM_MODEL,
         temperature=0,
         # gpt-oss models on Groq spend part of their output budget on a
-        # hidden reasoning phase before writing the final answer. Without
-        # an explicit max_tokens, that reasoning can consume the whole
-        # budget and leave message.content empty. This limit is generous
-        # enough for the JSON payloads this endpoint produces.
-        max_tokens=4096,
+        # hidden reasoning phase before writing the final answer, and that
+        # usage isn't perfectly deterministic between runs even at
+        # temperature=0. max_tokens=8000 mirrors the value already proven
+        # to work for this project's larger (cash-flow) schema.
+        max_tokens=8000,
+        # Structured field extraction doesn't need heavy step-by-step
+        # reasoning -- lowering effort reduces token usage in the hidden
+        # reasoning phase, directly reducing truncation risk.
+        reasoning_effort="low",
         messages=[
             {
                 "role": "system",
