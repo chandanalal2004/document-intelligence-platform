@@ -1,5 +1,4 @@
-﻿cd D:\AIENGINEER
-@'
+﻿
 # Document Intelligence Platform
 
 AI-powered extraction, validation and API platform for invoices, balance
