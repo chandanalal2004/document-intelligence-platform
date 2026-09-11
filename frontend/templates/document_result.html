@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{{ document_name }} — Document Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body data-document-name="{{ document_name }}">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <a href="/" class="brand-link">
+          <span class="brand-mark">DI</span>
+          <span class="brand-name">Document Intelligence</span>
+        </a>
+      </div>
+      <a class="docs-link" href="/">← Dashboard</a>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="panel" id="result-root">
+      <p class="subtle">Loading result…</p>
+    </section>
+  </main>
+
+  <script src="/static/js/result.js"></script>
+</body>
+</html>

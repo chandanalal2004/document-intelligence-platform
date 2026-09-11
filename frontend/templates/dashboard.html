@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Document Intelligence — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-mark">DI</span>
+        <span class="brand-name">Document Intelligence</span>
+      </div>
+      <a class="docs-link" href="/docs" target="_blank" rel="noopener">API docs</a>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="panel upload-panel">
+      <h1>Process a document</h1>
+      <p class="subtle">Upload an invoice, balance sheet, P&amp;L or cash flow statement (PDF, JPG, or PNG — up to 3 pages).</p>
+
+      <form id="upload-form">
+        <div class="field-row">
+          <label for="document_type">Document type</label>
+          <select id="document_type" name="document_type" required>
+            <option value="invoice">Invoice</option>
+            <option value="balance_sheet">Balance sheet</option>
+            <option value="profit_and_loss">Profit &amp; loss</option>
+            <option value="cash_flow_statement">Cash flow statement</option>
+          </select>
+        </div>
+
+        <div class="field-row">
+          <label for="file">File</label>
+          <input type="file" id="file" name="file" accept=".pdf,.jpg,.jpeg,.png" required />
+        </div>
+
+        <button type="submit" id="submit-btn">Process document</button>
+      </form>
+
+      <div id="upload-status" class="status-box" hidden></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Processed documents</h2>
+        <button id="refresh-btn" class="ghost-btn">Refresh</button>
+      </div>
+
+      <table class="doc-table">
+        <thead>
+          <tr>
+            <th>Document</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Validation</th>
+            <th>Processed</th>
+          </tr>
+        </thead>
+        <tbody id="doc-table-body">
+          <tr><td colspan="5" class="empty-row">Loading…</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="/static/js/dashboard.js"></script>
+</body>
+</html>

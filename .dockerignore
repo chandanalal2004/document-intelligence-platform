@@ -1,0 +1,14 @@
+**/venv/
+**/__pycache__/
+**/*.pyc
+.git/
+.gitignore
+.vscode/
+storage/app.db
+storage/uploads/
+backend/storage/app.db
+backend/storage/uploads/
+backend/cf2017_page*.png
+backend/cf2017_page*.tsv
+*.log
+.env
