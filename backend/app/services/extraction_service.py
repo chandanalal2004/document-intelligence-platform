@@ -615,10 +615,16 @@ def extract_fields(
         # temperature=0. max_tokens=8000 mirrors the value already proven
         # to work for this project's larger (cash-flow) schema.
         max_tokens=8000,
-        # Structured field extraction doesn't need heavy step-by-step
-        # reasoning -- lowering effort reduces token usage in the hidden
-        # reasoning phase, directly reducing truncation risk.
-        reasoning_effort="low",
+        # reasoning_effort is a Groq-specific extension, not part of the
+        # official OpenAI API, so the SDK's typed method signature doesn't
+        # accept it directly -- extra_body passes it straight through to
+        # the underlying HTTP request instead.
+        extra_body={
+            # Structured field extraction doesn't need heavy step-by-step
+            # reasoning -- lowering effort reduces hidden reasoning-token
+            # usage, directly reducing truncation risk.
+            "reasoning_effort": "low",
+        },
         messages=[
             {
                 "role": "system",
